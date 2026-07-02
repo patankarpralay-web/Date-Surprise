@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Surprise for Shital ❤️</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:linear-gradient(135deg,#ff758c,#ff7eb3);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+color:white;
+text-align:center;
+}
+
+.card{
+background:rgba(255,255,255,.15);
+backdrop-filter:blur(10px);
+padding:30px;
+border-radius:20px;
+width:90%;
+max-width:500px;
+box-shadow:0 0 20px rgba(0,0,0,.2);
+}
+
+button{
+padding:12px 25px;
+font-size:18px;
+margin:10px;
+border:none;
+border-radius:30px;
+cursor:pointer;
+transition:.3s;
+}
+
+#yes{
+background:#28a745;
+color:white;
+}
+
+#no{
+background:#dc3545;
+color:white;
+position:relative;
+}
+
+.heart{
+position:absolute;
+font-size:25px;
+animation:float 5s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-100px);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1 id="title">Hi Shital ❤️</h1>
+
+<h2 id="question">I have a small surprise for you...</h2>
+
+<button id="yes" onclick="nextQuestion()">Yes 💖</button>
+<button id="no">No 🙈</button>
+
+<audio autoplay loop>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+</div>
+
+<script>
+
+const questions=[
+"Do you like surprises? 😊",
+"Can I make you smile today? 🌸",
+"Would you like to go on a date with me? 🌹",
+"Can we make more beautiful memories together? ❤️",
+"Shital, will you be my forever? 💍"
+];
+
+let index=0;
+
+function nextQuestion(){
+
+index++;
+
+if(index<questions.length){
+
+document.getElementById("question").innerHTML=questions[index];
+
+let yes=document.getElementById("yes");
+
+yes.style.transform="scale("+(1+index*0.2)+")";
+
+}else{
+
+document.querySelector(".card").innerHTML=
+"<h1>❤️ YAYYY ❤️</h1>"+
+"<h2>Thank you Shital 💕</h2>"+
+"<h2>Pralay can't wait to take you on a beautiful date! 🌹</h2>"+
+"<h1>🥰 I Love You 🥰</h1>";
+
+for(let i=0;i<80;i++){
+
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="❤️";
+h.style.left=Math.random()*100+"vw";
+h.style.animationDuration=(3+Math.random()*3)+"s";
+document.body.appendChild(h);
+
+}
+
+}
+
+}
+
+const no=document.getElementById("no");
+
+no.addEventListener("mouseover",moveNo);
+no.addEventListener("click",moveNo);
+
+function moveNo(){
+
+let x=Math.random()*300-150;
+let y=Math.random()*300-150;
+
+no.style.transform=`translate(${x}px,${y}px)`;
+
+}
+
+</script>
+
+</body>
+</html>
